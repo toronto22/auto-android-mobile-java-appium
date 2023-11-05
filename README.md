@@ -4,3 +4,7 @@
 - ANDROID_HOME
 - Android studio
 - Java JDK
+
+
+adb kill-server
+adb start-server
