@@ -2,13 +2,12 @@ package toronto22.swaglabDemo.common.driver;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.AutomationName;
-import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.concurrent.TimeUnit;
+import java.time.Duration;
 
 public class AppiumDriverSetup {
      private static AndroidDriver driver = null;
@@ -18,16 +17,17 @@ public class AppiumDriverSetup {
 
     public static AndroidDriver createDriver(){
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, Platform.ANDROID);
-        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "android");
-        capabilities.setCapability(MobileCapabilityType.APP, "C:/Users/toron/IdeaProjects/auto-mobile-java-serenity-appium/app/swaglabs.apk");
+        capabilities.setCapability("platformName", Platform.ANDROID);
+        capabilities.setCapability("deviceName", "android");
+        capabilities.setCapability("app", "C:/Users/toron/IdeaProjects/auto-mobile-java-serenity-appium/app/swaglabs.apk");
         capabilities.setCapability("appPackage", "com.swaglabsmobileapp");
         capabilities.setCapability("appActivity", "com.swaglabsmobileapp.MainActivity");
         capabilities.setCapability("noReset", false);
-        capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.ANDROID_UIAUTOMATOR2);
+        capabilities.setCapability("automationName", AutomationName.ANDROID_UIAUTOMATOR2);
+        capabilities.setCapability("newCommandTimeout", 300);
         try {
             driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), capabilities);
-            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
