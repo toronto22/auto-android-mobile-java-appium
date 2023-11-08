@@ -7,7 +7,6 @@ Feature: Viewing Cart Test
 
   Scenario: Customer view there cart after select products to purchase
     When I add products to my cart
-      | product                           |
       | Sauce Labs Bike Light             |
       | Sauce Labs Backpack               |
       | Sauce Labs Bolt T-Shirt           |
@@ -16,7 +15,6 @@ Feature: Viewing Cart Test
       | Test.allTheThings() T-Shirt (Red) |
     And I view my cart
     Then I should see my selected products
-      | product                           |
       | Sauce Labs Bike Light             |
       | Sauce Labs Backpack               |
       | Sauce Labs Bolt T-Shirt           |
@@ -26,7 +24,6 @@ Feature: Viewing Cart Test
 
   Scenario: Customer remove products to buy in there cart
     When I add products to my cart
-      | product                           |
       | Sauce Labs Bike Light             |
       | Sauce Labs Backpack               |
       | Sauce Labs Bolt T-Shirt           |
@@ -35,11 +32,9 @@ Feature: Viewing Cart Test
       | Test.allTheThings() T-Shirt (Red) |
     And I view my cart
     And I remove products from my cart
-      | product               |
       | Sauce Labs Bike Light |
       | Sauce Labs Backpack   |
     Then I should see my selected products
-      | product                           |
       | Sauce Labs Bolt T-Shirt           |
       | Sauce Labs Fleece Jacket          |
       | Sauce Labs Onesie                 |
@@ -47,7 +42,6 @@ Feature: Viewing Cart Test
 
   Scenario: Customer continue to buy more item
     When I add products to my cart
-      | product               |
       | Sauce Labs Bike Light |
       | Sauce Labs Backpack   |
     And I view my cart

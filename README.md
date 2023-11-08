@@ -8,3 +8,7 @@
 
 adb kill-server
 adb start-server
+
+
+Run test: mvn clean verify
+Report: mvn serenity:reports

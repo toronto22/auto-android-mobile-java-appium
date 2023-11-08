@@ -3,7 +3,7 @@ package toronto22.swaglabDemo.pages;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 
-import static toronto22.swaglabDemo.common.navigation.Scroll.scrollDown;
+import static toronto22.swaglabDemo.common.navigation.Scroll.downToElement;
 
 public class ProductsPage extends BasePage {
     public ProductsPage(AppiumDriver driver) {
@@ -11,8 +11,11 @@ public class ProductsPage extends BasePage {
     }
 
     public void addToCard(String product){
-        scrollDown(driver,addToCardButton(product));
-        driver.findElement(addToCardButton(product)).click();
+        downToElement(driver,addToCardButton(product)).click();
+    }
+    public CartPage goToCart(){
+        driver.findElement(cartIcon).click();
+        return new CartPage(driver);
     }
 
     public boolean isDisplayed() {
@@ -23,4 +26,6 @@ public class ProductsPage extends BasePage {
     By addToCardButton(String product) {
         return By.xpath("//*[@text='"+product+"']/..//android.view.ViewGroup[@content-desc='test-ADD TO CART']");
     }
+
+    By cartIcon =  By.xpath("//android.view.ViewGroup[@content-desc=\"test-Cart\"]/android.view.ViewGroup/android.widget.ImageView");
 }
