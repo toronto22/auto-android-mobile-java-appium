@@ -27,7 +27,7 @@ public class AppiumDriverSetup {
         capabilities.setCapability("newCommandTimeout", 3600);
         try {
             driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), capabilities);
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+            driver.manage().timeouts().implicitlyWait(Duration.ofMillis(1500));
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }

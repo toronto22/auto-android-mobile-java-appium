@@ -17,6 +17,7 @@
     <maven.compiler.target>11</maven.compiler.target>
     <aspectj.version>1.9.9.1</aspectj.version>
     <allure.version>2.24.0</allure.version>
+    <slf4j.version>2.0.5</slf4j.version>
   </properties>
   <!-- Add allure-bom to dependency management to ensure correct versions of all the dependencies are used -->
   <dependencyManagement>
@@ -32,6 +33,22 @@
   </dependencyManagement>
 
   <dependencies>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>${slf4j.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>${slf4j.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.14</version>
+      <scope>provided</scope>
+    </dependency>
     <!-- https://mvnrepository.com/artifact/io.appium/java-client -->
     <dependency>
       <groupId>io.appium</groupId>
@@ -106,19 +123,9 @@
             <forkCount>5</forkCount>
             <reuseForks>false</reuseForks>
             <useSystemClassLoader>false</useSystemClassLoader>
-            <properties>
-              <property>
-                <name>listener</name>
-                <value>io.qameta.allure.junit5.AllureJunit5</value>
-              </property>
-            </properties>
-
             <argLine>
               -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
             </argLine>
-            <systemPropertyVariables>
-              <allure.results.directory>target/allure-results</allure.results.directory>
-            </systemPropertyVariables>
           </configuration>
           <dependencies>
             <dependency>

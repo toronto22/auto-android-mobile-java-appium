@@ -1,10 +1,7 @@
 package toronto22.swaglabDemo.common.navigation;
 
 import io.appium.java_client.AppiumDriver;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.NotFoundException;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Pause;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
@@ -22,15 +19,15 @@ public class Scroll {
         while (!found && count <= limit) {
             try {
                 count++;
-                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(1));
-                element = wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(500));
+                element = wait.until(ExpectedConditions.elementToBeClickable(by));
                 found = true;
-            } catch (Exception e) {
+            } catch (TimeoutException e) {
                 Dimension size = driver.manage().window().getSize();
                 int startX = size.width / 2;
                 int startY = (int) (size.height * 0.8);
                 int endX = size.width / 2;
-                int endY = (int) (size.height * 0.4);
+                int endY = (int) (size.height * 0.5);
 
                 PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
                 Sequence dragNDrop = new Sequence(finger, 1);
