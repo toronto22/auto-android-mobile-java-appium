@@ -9,17 +9,17 @@ import java.net.URL;
 import java.time.Duration;
 
 public class AppiumDriverSetup {
-     private static AndroidDriver driver = null;
+    private static AndroidDriver driver = null;
 
     private AppiumDriverSetup(AndroidDriver driver) {
         System.out.println("Will not setup driver here" + driver);
     }
 
-    public static AndroidDriver createDriver(){
+    public static AndroidDriver createDriver() {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", Config.PLATFORM_NAME);
         capabilities.setCapability("deviceName", Config.DEVICE_NAME);
-        capabilities.setCapability("app", Config.APP);
+        capabilities.setCapability("app", System.getProperty("user.dir") + "/" + Config.APP);
         capabilities.setCapability("appPackage", Config.APP_PACKAGE);
         capabilities.setCapability("appActivity", Config.APP_ACTIVITY);
         capabilities.setCapability("noReset", Config.NO_RESET);
@@ -35,8 +35,8 @@ public class AppiumDriverSetup {
         return driver;
     }
 
-    public static AndroidDriver getDriver(){
-        if(driver!=null) return driver;
+    public static AndroidDriver getDriver() {
+        if (driver != null) return driver;
         driver = createDriver();
 
         return driver;

@@ -7,7 +7,6 @@ import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 
 import java.util.List;
-import java.util.Map;
 
 public class OrderingProductSteps extends BaseSteps {
     @When("I add products to my cart")
