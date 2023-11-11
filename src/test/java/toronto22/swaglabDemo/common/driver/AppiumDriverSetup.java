@@ -1,9 +1,8 @@
 package toronto22.swaglabDemo.common.driver;
 
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.remote.AutomationName;
-import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import toronto22.swaglabDemo.common.configuration.Config;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -13,21 +12,22 @@ public class AppiumDriverSetup {
      private static AndroidDriver driver = null;
 
     private AppiumDriverSetup(AndroidDriver driver) {
+        System.out.println("Will not setup driver here" + driver);
     }
 
     public static AndroidDriver createDriver(){
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("platformName", Platform.ANDROID);
-        capabilities.setCapability("deviceName", "android");
-        capabilities.setCapability("app", "C:/Users/toron/IdeaProjects/auto-mobile-java-serenity-appium/app/swaglabs.apk");
-        capabilities.setCapability("appPackage", "com.swaglabsmobileapp");
-        capabilities.setCapability("appActivity", "com.swaglabsmobileapp.MainActivity");
-        capabilities.setCapability("noReset", false);
-        capabilities.setCapability("automationName", AutomationName.ANDROID_UIAUTOMATOR2);
-        capabilities.setCapability("newCommandTimeout", 3600);
+        capabilities.setCapability("platformName", Config.PLATFORM_NAME);
+        capabilities.setCapability("deviceName", Config.DEVICE_NAME);
+        capabilities.setCapability("app", Config.APP);
+        capabilities.setCapability("appPackage", Config.APP_PACKAGE);
+        capabilities.setCapability("appActivity", Config.APP_ACTIVITY);
+        capabilities.setCapability("noReset", Config.NO_RESET);
+        capabilities.setCapability("automationName", Config.AUTOMATION_NAME);
+        capabilities.setCapability("newCommandTimeout", Config.NEW_COMMAND_TIMEOUT);
         try {
-            driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), capabilities);
-            driver.manage().timeouts().implicitlyWait(Duration.ofMillis(1500));
+            driver = new AndroidDriver(new URL(Config.DRIVER_URL), capabilities);
+            driver.manage().timeouts().implicitlyWait(Duration.ofMillis(Config.IMPLICITLY_WAIT));
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }

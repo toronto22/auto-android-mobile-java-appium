@@ -3,7 +3,7 @@ package toronto22.swaglabDemo.pages;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 
-import static toronto22.swaglabDemo.common.navigation.Scroll.downToElement;
+import static toronto22.swaglabDemo.common.driver.navigation.Scroll.downToElement;
 
 public class ProductsPage extends BasePage {
     public ProductsPage(AppiumDriver driver) {
@@ -11,7 +11,7 @@ public class ProductsPage extends BasePage {
     }
 
     public void addToCard(String product){
-        downToElement(driver,addToCardButton(product)).click();
+        downToElement(driver,addToCardButton(product),5).click();
     }
     public CartPage goToCart(){
         driver.findElement(cartIcon).click();

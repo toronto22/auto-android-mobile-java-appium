@@ -12,6 +12,6 @@ public class WebHooks {
 
     @After
     public void tearDown(){
-        AppiumDriverSetup.getDriver().closeApp();
+        AppiumDriverSetup.getDriver().terminateApp("com.swaglabsmobileapp");
     }
 }

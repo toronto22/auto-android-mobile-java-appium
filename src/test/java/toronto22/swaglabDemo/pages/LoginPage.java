@@ -2,6 +2,9 @@ package toronto22.swaglabDemo.pages;
 
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
+import toronto22.swaglabDemo.common.driver.navigation.Wait;
+
+import java.time.Duration;
 
 public class LoginPage extends BasePage{
     public LoginPage(AppiumDriver driver) {
@@ -10,7 +13,7 @@ public class LoginPage extends BasePage{
 
     public void login(String username, String password){
         if(username!=null){
-            driver.findElement(usernameInput).sendKeys(username);
+            Wait.forDisplayed(driver,usernameInput, Duration.ofSeconds(10)).sendKeys(username);
         }
         if(password!=null){
             driver.findElement(passwordInput).sendKeys(password);

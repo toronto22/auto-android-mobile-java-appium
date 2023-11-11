@@ -1,4 +1,4 @@
-package toronto22.swaglabDemo.common.navigation;
+package toronto22.swaglabDemo.common.driver.navigation;
 
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.*;

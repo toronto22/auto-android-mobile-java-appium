@@ -2,7 +2,7 @@ package toronto22.swaglabDemo.pages;
 
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
-import toronto22.swaglabDemo.common.navigation.Scroll;
+import toronto22.swaglabDemo.common.driver.navigation.Scroll;
 
 public class CartPage extends BasePage {
     public CartPage(AppiumDriver driver) {

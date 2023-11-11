@@ -2,9 +2,7 @@ package toronto22.swaglabDemo.pages;
 
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
-import toronto22.swaglabDemo.common.navigation.Scroll;
-
-import static toronto22.swaglabDemo.common.navigation.Scroll.downToElement;
+import toronto22.swaglabDemo.common.driver.navigation.Scroll;
 
 public class CheckoutPage extends BasePage {
     public CheckoutPage(AppiumDriver driver) {
